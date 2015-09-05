@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="id01"></div>
+
+<script>
+var Json = new XMLHttpRequest();
+var url = "http://localhost/response.php";
+
+// xmlhttp.onreadystatechange = function() {
+//     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+//         var myArr = JSON.parse(xmlhttp.responseText);
+//         myFunction(myArr);
+//     }
+// }
+xmlhttp.open("GET", url, true);
+xmlhttp.send();
+
+console.log(xhr.status);
+console.log(xhr.statusText);
+
+// function myFunction(arr) {
+//     console.log(arr);
+// }
+</script>
+
+</body>
+</html>

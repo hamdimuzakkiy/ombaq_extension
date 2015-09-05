@@ -1,0 +1,16 @@
+{
+  "extName" : {
+    "message" : "Error: $details$ $new$ ",
+    "description" : "Extension Name",
+    "placeholders": {
+          "details": {
+            "content": "hamdi $new$",
+            "example": "Failed to fetch RSS feed."
+          },
+          "new": {
+            "content": "ahmadi",
+            "example": "Failed to fetch RSS feed."                  
+          }
+        }
+  }
+}

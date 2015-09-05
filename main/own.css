@@ -1,0 +1,8 @@
+body {
+        background-image:url('chrome-extension://__MSG_@@extension_id__/icon.png');
+        padding-__MSG_@@bidi_start_edge__: 10em;
+        padding-__MSG_@@bidi_end_edge__: 10.5em;
+        padding-bidi_reversed_dir: 300em;
+
+}
+

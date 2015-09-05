@@ -1,0 +1,47 @@
+{
+  "manifest_version": 3,
+  "name": "Getting started example",
+  "description": "This extension shows a Google Image search result for the current page",
+  "default_locale" : "en",
+  "version": "1.0",
+  "content_scripts" : [
+    {
+      "matches" :[
+        "http://*/*",
+        "https://*/*"
+      ],
+      "css" : [
+        "css/own.css"
+      ],
+      "js" : [
+        "js/angular.min.js",
+        "js/jquery.js",        
+        "js/own.js"
+        ],
+        "run_at" : "document_end"        
+    }
+  ],
+  "content_security_policy": "script-src 'self'; object-src 'self'",   
+  "browser_action": {
+    "default_icon": "image/ombaq_logo.png",
+    "default_popup": "html/popup2.html",
+    "default_title": "ombaQ"
+  },
+  "background": {
+    "scripts": ["js/background.js"],
+    // "page": "html/background.html",
+    "persistent": false
+    
+  },
+  "permissions": [ "<all_urls>", "storage","tabs"]
+  ,
+  "web_accessible_resources": [     // inject to real page
+    "html/login.html",
+    "html/main.html"
+    // ,
+    // "js/inject.js",
+    // "js/angular.min.js",          
+    // "js/own.js",
+    // "js/jquery.js"
+  ]  
+}

@@ -1,0 +1,56 @@
+<html hidden>
+  <head>
+    <title>Ombak Extension</title>    
+    <script src="../js/jquery.js"></script>    
+    <script src="../js/angular.min.js"></script>
+    <script src="../js/popup.js"></script>
+
+    <!-- styling -->    
+    <link rel="stylesheet" type="text/css" href="../css/materialize/materialize.css">
+    <link rel="stylesheet" type="text/css" href="../css/materialize/prism.css">
+    <link rel="stylesheet" type="text/css" href="../css/materialize/ghpages-materialize.css">
+    <link rel="stylesheet" type="text/css" href="../css/own.css">
+    <script src="../js/materialize/materialize.js"></script>
+    <script src="../js/materialize/prism.js"></script>
+    <script src="../js/materialize/dropdown.js"></script>
+    
+
+  </head>
+  <body>
+
+    <!-- <div ng-app="">
+      <p>Input something in the input box:</p>
+      <p>Name: <input type="text" ng-model="name"></p>
+      <p ng-bind="name"></p>
+
+      <img src="" id = "profile_image">
+      <div id = "name"></div>
+      <a id="addschedule">click Me !!!</a>
+      <a id="toOtherPage">To Other Page !!!</a>
+
+      <p ng-show="true">I am visible.</p>
+
+      <p ng-show="false">I am not visible.</p>
+    </div> -->
+    <!-- <a id="addschedule">click Me !!!</a> -->
+    <div ng-app="myApp" ng-controller="myCtrl">
+      <div ng-show="login_flag">
+        <div class = "container">
+          <div class="row">
+            <div class="col s12">
+              <IMG ng-src="{{profile_image_url}}"></IMG>          
+            </div>
+            <button id = "appearPopUp">Click Here</button>
+          </div>        
+        </div>
+      </div>
+      <div ng-show="!login_flag">
+        <div>
+          <a class="waves-effect waves-light btn" id = "login">Login
+          ]</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
