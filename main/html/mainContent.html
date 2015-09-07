@@ -1,0 +1,53 @@
+<div class="row">
+      <div class = "col-lg-4 col-lg-offset-4">
+        <div class = "thumbnail login-container ">        
+          <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#home">Scheduling</a></li>
+            <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
+            <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+            <li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
+          </ul>
+          <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+                <form ng-submit="_publish()">                
+                    <!-- <div class="checkbox col-lg-12 form-group" ng-repeat="line in lines">
+                        <label>
+                            <input ng-model="social_account" type="checkbox" value = "{{line.id}}"> {{line.text}}
+                        </label>
+                    </div> -->
+                    <br>
+                    <div class="col-lg-12 form-group" ng-repeat="social_account in social_accounts ">
+                        <div class="action-checkbox">
+                            <input id="{{social_account.id}}" type="checkbox" value="{{social_account.id}}" ng-checked="selection.indexOf(social_account.id) > -1" ng-click="toggleSelection(social_account.id)" />
+                            <label for="{{social_account.name}}"></label>
+                            {{social_account.name}}
+                      </div>
+                    </div>                
+                    <br>
+                    <div class = 'col-lg-12 form-group'>
+                        <textarea  ng-model="message" class="form-control" placeholder = "Message..."></textarea>
+                    </div>                    
+                    <div class = 'col-lg-12 form-group'>
+                    <input  ng-model="schedule" class="form-control" placeholder = "">
+                    </div>                                    
+                    <div class = 'form-group'>
+                    <button type="submit" class = 'btn btn-full' id="submit" value="Submit" />Submit</button>
+                    </div>
+                    <input id = 'testing' value = 'zzz'>
+                </form>
+            </div>
+            <div id="menu1" class="tab-pane fade">
+              <h3>Menu 1</h3>
+              <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+            <div id="menu2" class="tab-pane fade">
+              <h3>Menu 2</h3>
+              <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+            </div>
+            <div id="menu3" class="tab-pane fade">
+              <h3>Menu 3</h3>
+              <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+            </div>
+          </div>
+        </div>
+      </div>

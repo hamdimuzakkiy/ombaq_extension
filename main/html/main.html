@@ -3,38 +3,90 @@
 <head>
   <head>
     <title>Ombak Extension</title>    
-    <script src="../js/jquery.js"></script>    
+    <script src="../js/jquery.js"></script>
     <script src="../js/angular.min.js"></script>
     <script src="../js/own.js"></script>
-    <script src="../js/_angular.js"></script>    
-    <!-- styling -->    
-    <link rel="stylesheet" type="text/css" href="../css/materialize/materialize.css">
-    <link rel="stylesheet" type="text/css" href="../css/materialize/prism.css">
-    <link rel="stylesheet" type="text/css" href="../css/materialize/ghpages-materialize.css">
-    <link rel="stylesheet" type="text/css" href="../css/own.css">
-
-    <script src="../js/materialize/materialize.js"></script>
-    <script src="../js/materialize/prism.js"></script>
-    <script src="../js/materialize/dropdown.js"></script>
+    <script src="../js/_angular.js"></script> 
+    <script src="../bower/flatly/bootsrap.js"></script>    
     
+    <link rel="stylesheet" type="text/css" href="../bower/flatly/bootstrap.css">   
+    <link rel="stylesheet" type="text/css" href="../bower/flatly/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/own.css">
 
   </head>
 </head>
 <body class = "main_ombaq">
-  <div ng-app="myApp" ng-controller="myMain">
-	  <div class="row">
-	      	<div class="col s4 offset-s4">
-		        <div class="card login-container">
-		          <div class = "container container-edit">            
-				    <form ng-submit="_publish()">
-				      <input type="text" ng-model="message" placeholder = "Message...">
-				      <input type="text" ng-model="schedule" name = 'schedule'>				      
-					  <button type="submit" class = 'btn cyan waves-effect waves-light btn-full' id="submit" value="Submit" />Submit</button>	  
-					</form>
-				  </div>  
-				</div>
-			</div>
-		</div>
-	</div>		  
+  <div ng-app="myApp" ng-controller="myMain">    
+    <div class="row">
+      <div class = "col-lg-4 col-lg-offset-4">        
+
+        <div class = "thumbnail login-container ">                        
+          <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#home">Scheduling</a></li>
+            <li><a data-toggle="tab" href="#menu1">Config</a></li>
+            <li><a data-toggle="tab" href="#menu2">Project</a></li>
+            <li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
+          </ul>
+          <div class="tab-content">
+          <br>
+            <label>{{curentProject}}</label>
+            <div id="home" class="tab-pane fade in active">
+                <form ng-submit="_publish()">                              
+                    <br>
+                    <div class=" form-group" ng-repeat="social_account in social_accounts ">
+                        <div class="action-checkbox">
+                            <input id="{{social_account.id}}" type="checkbox" value="{{social_account.id}}" ng-checked="selection.indexOf(social_account.id) > -1" ng-click="toggleSelection(social_account.id)" />
+                            <label for="{{social_account.name}}"></label>
+                            {{social_account.name}}
+                      </div>
+                    </div>                
+                    
+                    <div class = ' form-group'>
+                        <textarea  ng-model="message" class="form-control" placeholder = "Message..."></textarea>
+                    </div>                    
+                    <div class = ' form-group'>
+                        <input  ng-model="schedule" class="form-control" placeholder = "">
+                    </div>                                    
+                    <div class = 'form-group'>
+                        <button type="submit" class = 'btn btn-full' id="submit" value="Submit" />Submit</button>
+                    </div>                    
+                </form>
+            </div>
+            <div id="menu1" class="tab-pane fade">
+                <br>
+                <label>List Account</label>
+                <div class=" form-group" ng-repeat="social_account in social_accounts">
+                    <div class = "form-group">
+                        {{social_account.name}} <a href="#" ng-click="delAcc(social_account.id)" style = "float:right">x</a>
+                    </div>                                    
+                </div> 
+            </div>
+            <div id="menu2" class="tab-pane fade">
+                <br>
+                <div class = 'form-group'>                
+                    <select class = "form-control" ng-options="project.value as project.name for project in projects" ng-model="selectedOption" ng-change="updateProject()">                        
+                    </select>
+                </div>
+                <hr>
+                <label>Create New Project</label>
+                <div class = ' form-group'>
+                    <input  ng-model="projectName" class="form-control" placeholder = "Project Name">
+                </div>
+                <div class = ' form-group'>
+                    <input  ng-model="projectDescription" class="form-control" placeholder = "Project Description">
+                </div>
+                <button type="submit" ng-click = "addProject()" class = 'btn btn-full' id="submit" value="Submit" />Tambah Project</button>
+            </div>
+            <div id="menu3" class="tab-pane fade">
+              <h3>Menu 3</h3>
+              <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+            </div>
+          </div>
+        </div>
+      </div>  
+    </div>    
+  </div>  
 </body>
 </html>
+
+

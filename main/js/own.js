@@ -60,19 +60,19 @@ function retriveSources(sources){
     return res;
 }
 
-function addTargets(social_account_id , message, sources){
+function addTargets(social_account_id , message){
 
     var res = [];
     var urlData = '';
     var chooseMode = '';
     for (var i=0;i<social_account_id.length;i++){
-
-        if (sources[social_account_id[i].social_account_id][1] == 'tw'){
+        
+        if ( social_account_id[i].source == 'tw'){
             urlData = 'statuses/update.json';
             chooseMode = 'status';
         }
-        else if (sources[social_account_id[i].social_account_id][1] == 'fb'){
-            urlData =  sources[social_account_id[i].social_account_id][0]+'/feed';
+        else if ( social_account_id[i].source == 'fb'){
+            urlData =  social_account_id[i].user_id+'/feed';
             chooseMode = 'message';
         }        
 
@@ -109,10 +109,55 @@ function getProject(){
     return callAjax(url, type, dataType, data, headers, async);
 }
 
+function addProjects(project_name,project_description){
+    console.log(window.location.href+'add proj');
+    init();
+    token =  getCSRF();
+    url = base_url+'projects';    
+    type = 'POST';
+    dataType = 'json';
+    async = false;
+    data = {
+        'project_name': project_name,
+        'project_description': project_description
+    }    
+    headers = { 'X-CSRF-TOKEN': token };    
+    return (callAjax(url, type, dataType, data, headers, async));
+}
+
+function addProjects(project_name,project_description){
+    init();
+    token =  getCSRF();
+    url = base_url+'projects';    
+    type = 'POST';
+    dataType = 'json';
+    async = false;
+    data = {
+        'project_name': project_name,
+        'project_description': project_description
+    }    
+    headers = { 'X-CSRF-TOKEN': token };    
+    return (callAjax(url, type, dataType, data, headers, async));
+}
+
+function deleteAccount(project_id, source_id){
+    init();
+    token =  getCSRF();
+    url = base_url+'projects/'+project_id+'/sources/'+source_id;    
+    type = 'DELETE';
+    dataType = 'json';
+    async = false;
+    data = {
+        'project_id': project_id,
+        'source_id': source_id
+    }    
+    headers = { 'X-CSRF-TOKEN': token };    
+    return (callAjax(url, type, dataType, data, headers, async));
+
+}
 
 function addSchedule(project_id, social_account_id, schedule, message){
-
-    var sources = retriveSources(getSources());
+        
     init();
     token =  getCSRF();
     url = base_url+'projects/'+project_id+'/messages';    
@@ -122,10 +167,9 @@ function addSchedule(project_id, social_account_id, schedule, message){
     data = {
         'data': '{"message":"'+message+'"}',
         'schedule': schedule,
-        'targets':  addTargets(social_account_id, message,sources)        
-    }
-    
-    headers = { 'X-CSRF-TOKEN': token };
+        'targets':  addTargets(social_account_id, message)        
+    }    
+    headers = { 'X-CSRF-TOKEN': token };    
     return (callAjax(url, type, dataType, data, headers, async));
 }
 
@@ -152,38 +196,40 @@ function callAjax(url, type, dataType, data, headers, async){
     return dataReturn;
 }
 
-function checkLogin(){
-    init();    
-    url = base_url+'users/info';
-    async = false;
-    data = callAjax(url, type, dataType, data, headers, async);    
-    if (typeof data.user_id == 'undefined')
-        return false;
-        return true;
-}
+// function checkLogin(){
+//     init();    
+//     url = base_url+'users/info';
+//     async = false;
+//     data = callAjax(url, type, dataType, data, headers, async);    
+//     if (typeof data.user_id == 'undefined')
+//         return false;
+//         return true;
+// }
 
-function getTabId(){
-  chrome.tabs.getSelected(null, function(tab){  	
-    return tab;
-  });
-}
+// function getTabId(){
+//   chrome.tabs.getSelected(null, function(tab){  	
+//     return tab;
+//   });
+// }
 
-function getIdExtension(){    
-	return chrome.runtime.id;
-}
-    
-function appear(){	
-    chrome.tabs.executeScript( getTabId() , {file : 'js/call.js'},
-    function(results){ /* result here */ } );  
-}
+// function getIdExtension(){    
+// 	return chrome.runtime.id;
+// }
+// function appear(){	
+//     chrome.tabs.executeScript( getTabId() , {file : 'js/call.js'},
+//     function(results){ /* result here */ } );
+// }
 
-function callBackground(url){    
+function callBackground(url){
     var port = chrome.extension.connect({name: "Sample Communication"});
     port.postMessage(url);
     port.onMessage.addListener(function(msg) {      
     });
 }
 
-window.addEventListener("message", function (event) {
-    console.log(event);
-}, false);
+// window.addEventListener("message", function (event) {
+//     console.log(event);
+// }, false);
+
+// port.onMessage.addListener(function(msg) {      
+// });

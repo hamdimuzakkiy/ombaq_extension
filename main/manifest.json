@@ -13,12 +13,12 @@
       "css" : [
         "css/own.css"
       ],
-      "js" : [
-        "js/angular.min.js",
-        "js/jquery.js",        
-        "js/own.js"
+      "js" : [        
+        "js/jquery.js",
+        "js/content_script.js"        
+          
         ],
-        "run_at" : "document_end"        
+        "run_at" : "document_start"        
     }
   ],
   "content_security_policy": "script-src 'self'; object-src 'self'",   
@@ -30,7 +30,7 @@
   "background": {
     "scripts": ["js/background.js"],
     // "page": "html/background.html",
-    "persistent": false
+    "persistent": true
     
   },
   "permissions": [ "<all_urls>", "storage","tabs"]
@@ -38,10 +38,5 @@
   "web_accessible_resources": [     // inject to real page
     "html/login.html",
     "html/main.html"
-    // ,
-    // "js/inject.js",
-    // "js/angular.min.js",          
-    // "js/own.js",
-    // "js/jquery.js"
   ]  
 }

@@ -1,7 +1,6 @@
 chrome.extension.onConnect.addListener(function(port) {  
-  port.onMessage.addListener(function(msg) {
-        openLogin(msg);
-
+  port.onMessage.addListener(function(msg) {  	  	
+        openLogin(msg);        
   });
 });
 
@@ -17,3 +16,8 @@ function closeLogin(_window){
 	//chrome.tabs.remove(_window.tabs[0].id);
 }
 
+
+function test(){
+	// alert('background here');
+
+}

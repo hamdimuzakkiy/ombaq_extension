@@ -17,46 +17,93 @@ function redirectToAnotherPage(page){
 }
 
 function retriveSocialId(jsonData){
+    
 	var i=0;
 	var res = [];
 	for (var i=0;i<jsonData.length;i++){				
-		res.push(jsonData[i].social_account_id);		
+		res.push({'id' : {'user_id' : jsonData[i].user_id, 'source' : jsonData[i].source, 'social_account_id' : jsonData[i].social_account_id},'name':jsonData[i].screen_name});
 	}
 	return res;
 }
 
+function retriveProject(jsonData){
+
+    var i=0;
+    var res = [];
+    for (var i=0;i<jsonData.length;i++){                
+        res.push({'value' : jsonData[i].project_id,'name':jsonData[i].project_name});
+    }    
+    return res;
+}
+
 var app = angular.module('myApp', []);
-app.controller('myCtrl', function($scope) {
-    $scope._login = function (page){    	    	
-    	redirectToAnotherPage(getLoginApi(page));
-    	appear();
+
+app.controller('myCtrl', function($scope) { 
+    $scope.variabel = 1;   
+    $scope._login = function (page){        
+    	redirectToAnotherPage(getLoginApi(page));    	
     }
 });
 
-app.controller('myMain', function($scope) {	
-	$scope.schedule = '2015-09-04 08:55:18';
+app.controller('myMain', function($scope) {
+
+    $scope.projects = retriveProject(getProject());
+    $scope.selectedOption = $scope.projects[0].value;
+    $scope.curentProject = $scope.projects[0].name;
+	$scope.schedule = '2015-09-04 08:55:18';    
+    $scope.message = document.referrer;    
+    $scope.social_accounts = retriveSocialId(getSourcesProjectId($scope.projects[0].value));
+    project_id = $scope.projects[0].value;
+    $scope.selection=[];
+    $scope.toggleSelection = function toggleSelection(id) {
+     var idx = $scope.selection.indexOf(id);
+
+     if (idx > -1) {
+       $scope.selection.splice(idx, 1);
+     }
+     
+     else {
+       $scope.selection.push(id);
+     }
+    };
+
+    $scope.addProject = function addProject(){
+        addProjects($scope.projectName,$scope.projectDescription) ;        
+        $scope.projects = retriveProject(getProject());
+    }    
+    $scope.updateProject = function updateProject(){     
+        project_id = $scope.selectedOption;
+        $scope.message = document.referrer;            
+        $scope.social_accounts = retriveSocialId(getSourcesProjectId($scope.selectedOption));
+        list_proj = retriveProject(getProject());
+        for (var i = 0; i < list_proj.length; i++) {
+            if (list_proj[i].value == project_id)
+            $scope.curentProject = list_proj[i].name;
+        };
+    }
+
+    $scope.delAcc = function delAcc(acc){
+        deleteAccount(project_id, acc.social_account_id);
+        $scope.social_accounts = retriveSocialId(getSourcesProjectId($scope.selectedOption));
+    }
+
     $scope._publish = function (page){
     	
     	project = getProject();    	
 
-    	project_id = project[0].project_id;
-    	// project_id = '11697';
-
     	message = this.message;
     	schedule = this.schedule;
-    	social_account_id = getSourcesProjectId(project_id);
+    	
+        social_account_id = $scope.selection;        
+    	schedule = formatingSchedule(schedule);        
 
-    	schedule = formatingSchedule(schedule);    	
-    	    
-
-    	if(addSchedule(project_id,social_account_id,schedule,message) == 'Created')
+    	if(addSchedule(project_id,social_account_id,schedule,message) == 'Created'){
+            $scope.message = '';
     		alert('created');
-    	else
+        }
+    	else{
     		alert('not created');
+        }
     }
 });
-
-
-
-
 
