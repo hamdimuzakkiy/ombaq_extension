@@ -196,34 +196,10 @@ function callAjax(url, type, dataType, data, headers, async){
     return dataReturn;
 }
 
-// function checkLogin(){
-//     init();    
-//     url = base_url+'users/info';
-//     async = false;
-//     data = callAjax(url, type, dataType, data, headers, async);    
-//     if (typeof data.user_id == 'undefined')
-//         return false;
-//         return true;
-// }
-
-// function getTabId(){
-//   chrome.tabs.getSelected(null, function(tab){  	
-//     return tab;
-//   });
-// }
-
-// function getIdExtension(){    
-// 	return chrome.runtime.id;
-// }
-// function appear(){	
-//     chrome.tabs.executeScript( getTabId() , {file : 'js/call.js'},
-//     function(results){ /* result here */ } );
-// }
-
-function callBackground(url){
+function callBackground(url){    
     var port = chrome.extension.connect({name: "Sample Communication"});
     port.postMessage(url);
-    port.onMessage.addListener(function(msg) {      
+    port.onMessage.addListener(function(msg) {alert(msg)      
     });
 }
 
@@ -231,5 +207,12 @@ function callBackground(url){
 //     console.log(event);
 // }, false);
 
-// port.onMessage.addListener(function(msg) {      
-// });
+
+// var editorExtensionId = "bbkeknljpgahncdpmondcjjdkgddbbdd";
+
+// // Make a simple request:
+// chrome.runtime.sendMessage(editorExtensionId, {openUrlInEditor: url},
+//   function(response) {
+//     if (!response.success)
+//       handleError(url);
+//   });

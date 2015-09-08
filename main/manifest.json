@@ -18,7 +18,7 @@
         "js/content_script.js"        
           
         ],
-        "run_at" : "document_start"        
+        "run_at" : "document_end"        
     }
   ],
   "content_security_policy": "script-src 'self'; object-src 'self'",   
@@ -26,14 +26,14 @@
     "default_icon": "image/ombaq_logo.png",
     "default_popup": "html/popup2.html",
     "default_title": "ombaQ"
-  },
+  },  
   "background": {
     "scripts": ["js/background.js"],
     // "page": "html/background.html",
-    "persistent": true
+    "persistent": false
     
   },
-  "permissions": [ "<all_urls>", "storage","tabs"]
+  "permissions": [ "<all_urls>", "storage","tabs","activeTab","http://*/*","https://*/*"]
   ,
   "web_accessible_resources": [     // inject to real page
     "html/login.html",

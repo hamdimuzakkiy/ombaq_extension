@@ -65,3 +65,18 @@ function getWindow(){
 //         alert('con');
 //   });
 // });
+
+// function injectJs(srcFile) {
+//     var scr = document.createElement('script');
+//     scr.src = srcFile;
+//     document.getElementsByTagName('body')[0].appendChild(scr);    
+// }
+// injectJs(chrome.extension.getURL('js/inject.js'));
+
+
+
+// injectJs(chrome.extension.getURL('js/yourscript.js'));
+function hamdi(){
+	alert('kaka');
+}
+

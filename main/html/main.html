@@ -3,15 +3,19 @@
 <head>
   <head>
     <title>Ombak Extension</title>    
-    <script src="../js/jquery.js"></script>
+    
     <script src="../js/angular.min.js"></script>
     <script src="../js/own.js"></script>
     <script src="../js/_angular.js"></script> 
     <script src="../bower/flatly/bootsrap.js"></script>    
     
+    <link href="../bower/datetime/example/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link rel="stylesheet" type="text/css" href="../bower/flatly/bootstrap.css">   
     <link rel="stylesheet" type="text/css" href="../bower/flatly/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../css/own.css">
+    <link rel="stylesheet" type="text/css" href="../bower/sweetalert/sweetalert.css">
+
+    <link rel="stylesheet" type="text/css" href="../css/own.css">    
+    <link href="../bower/datetime/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
 
   </head>
 </head>
@@ -24,8 +28,7 @@
           <ul class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#home">Scheduling</a></li>
             <li><a data-toggle="tab" href="#menu1">Config</a></li>
-            <li><a data-toggle="tab" href="#menu2">Project</a></li>
-            <li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
+            <li><a data-toggle="tab" href="#menu2">Project</a></li>            
           </ul>
           <div class="tab-content">
           <br>
@@ -44,9 +47,27 @@
                     <div class = ' form-group'>
                         <textarea  ng-model="message" class="form-control" placeholder = "Message..."></textarea>
                     </div>                    
-                    <div class = ' form-group'>
+                    <!-- <div class = ' form-group'>
                         <input  ng-model="schedule" class="form-control" placeholder = "">
-                    </div>                                    
+                    </div>         -->
+                    <!-- <div class="form-group">                        
+                        <div class="input-group date form_datetime col-md-12" data-date="1979-09-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
+                            <input class="form-control" size="16"  type="text" value="" readonly>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                        </div>
+                        <input type="" id="dtp_input1" value="" ng-model="schedule"/><br/>
+                    </div>   -->                          
+
+                    <div class="form-group">
+                        <div class='input-group date' id='datetimepicker1'>
+                            <input type='text' ng-model="schedule" id= "inpDate" class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+
                     <div class = 'form-group'>
                         <button type="submit" class = 'btn btn-full' id="submit" value="Submit" />Submit</button>
                     </div>                    
@@ -76,16 +97,19 @@
                     <input  ng-model="projectDescription" class="form-control" placeholder = "Project Description">
                 </div>
                 <button type="submit" ng-click = "addProject()" class = 'btn btn-full' id="submit" value="Submit" />Tambah Project</button>
-            </div>
-            <div id="menu3" class="tab-pane fade">
-              <h3>Menu 3</h3>
-              <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-            </div>
+            </div>            
           </div>
         </div>
       </div>  
     </div>    
   </div>  
+<script type="text/javascript" src="../bower/datetime/example/jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../bower/datetime/example/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../bower/sweetalert/sweetalert.min.js"></script>
+<script type="text/javascript" src="../bower/datetime/example/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../bower/datetime/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../bower/datetime/js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../bower/dateTime/own.js" charset="UTF-8"></script>
 </body>
 </html>
 

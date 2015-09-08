@@ -1,5 +1,5 @@
 chrome.extension.onConnect.addListener(function(port) {  
-  port.onMessage.addListener(function(msg) {  	  	
+  port.onMessage.addListener(function(msg) {
         openLogin(msg);        
   });
 });
@@ -18,6 +18,5 @@ function closeLogin(_window){
 
 
 function test(){
-	// alert('background here');
-
+	alert('background here');
 }

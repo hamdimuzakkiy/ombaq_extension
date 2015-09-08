@@ -13,11 +13,13 @@
 
 // injectJs(chrome.extension.getURL('js/yourscript.js'));
 
-function alerts(){
-	alert('ini inject content_script');
-}
-console.log(window.location.href);
+// function alerts(){
+// 	alert('ini inject content_script');
+// }
+// console.log(window.location.href);
 
-window.addEventListener("message", function (event) {    
-    console.log(event);
-}, false);
+// window.addEventListener("message", function (event) {    
+//     console.log(event);
+// }, false);
+
+// alert('zz');

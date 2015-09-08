@@ -8,7 +8,7 @@ function formatingSchedule(schedule){
 	else
 		time[0] = parseInt(time[0]) + 17;
 	
-	schedule = splitedSchedule[0]+' '+time[0]+':'+time[1]+':'+time[2];	
+	schedule = splitedSchedule[0]+' '+time[0]+':'+time[1]+':'+'00';	
 	return schedule;
 }
 
@@ -50,7 +50,7 @@ app.controller('myMain', function($scope) {
     $scope.projects = retriveProject(getProject());
     $scope.selectedOption = $scope.projects[0].value;
     $scope.curentProject = $scope.projects[0].name;
-	$scope.schedule = '2015-09-04 08:55:18';    
+	$scope.schedule = '';
     $scope.message = document.referrer;    
     $scope.social_accounts = retriveSocialId(getSourcesProjectId($scope.projects[0].value));
     project_id = $scope.projects[0].value;
@@ -92,18 +92,24 @@ app.controller('myMain', function($scope) {
     	project = getProject();    	
 
     	message = this.message;
-    	schedule = this.schedule;
+    	schedule = getInputDate();        
     	
         social_account_id = $scope.selection;        
     	schedule = formatingSchedule(schedule);        
 
+        console.log(schedule);
+
     	if(addSchedule(project_id,social_account_id,schedule,message) == 'Created'){
             $scope.message = '';
-    		alert('created');
+    		swal("Created!", "", "success");
         }
     	else{
-    		alert('not created');
+    		swal("Not Created!", "", "error");
         }
     }
 });
 
+
+function getInputDate(){
+    return $('#inpDate').val();
+}
