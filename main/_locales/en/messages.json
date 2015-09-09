@@ -1,22 +1,16 @@
 {
-  "error": {
-        "message": "$details$",
-        "description": "Generic error template. Expects error parameter to be passed in.",
-        "placeholders": {
+  "extName" : {
+    "message" : "$details$ $new$ ",
+    "description" : "Extension Name",
+    "placeholders": {
           "details": {
-            "content": "$1",
-        	"example": "Cira"
+            "content": "english $new$",
+            "example": "Failed to fetch RSS feed."
+          },
+          "new": {
+            "content": "Language",
+            "example": "Failed to fetch RSS feed."                  
           }
         }
-      },
-   "no_error" : {
-   		"message": "$details$",
-        "description": "Generic error template. Expects error parameter to be passed in.",
-        "placeholders": {
-          "details": {
-            "content": "$2,$1,$3",
-        	"example": ["Cira","ahmadi","ahmadi","ahmadi","ahmadi","ahmadi","ahmadi"]
-          }
-        }
-   }
+  }
 }

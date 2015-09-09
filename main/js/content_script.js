@@ -76,7 +76,20 @@ function getWindow(){
 
 
 // injectJs(chrome.extension.getURL('js/yourscript.js'));
-function hamdi(){
-	alert('kaka');
-}
+
+
+var greeting = "hola, ";
+var button = document.getElementById("mybutton");
+button.person_name = "Roberto";
+button.addEventListener("click", function() {
+  alert(greeting + button.person_name + ".");
+}, false);
+
+
+
+
+button.addEventListener("click", function() {
+  // do something
+}, false);
+
 

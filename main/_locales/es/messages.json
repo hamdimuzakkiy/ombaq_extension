@@ -4,11 +4,11 @@
     "description" : "Extension Name",
     "placeholders": {
           "details": {
-            "content": "hamdi $new$",
+            "content": "Espanol $new$",
             "example": "Failed to fetch RSS feed."
           },
           "new": {
-            "content": "ahmadi",
+            "content": "Language",
             "example": "Failed to fetch RSS feed."                  
           }
         }

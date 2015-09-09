@@ -1,14 +1,61 @@
+function isKabisat(year){
+
+    if (year%400 == 0)
+        return true;
+    else if (year%400 != 0 && year%100 == 0)
+        return false;                       
+    else if (year%400 != 0 && year%100 != 0 && year%4 == 0)
+        return true;
+    else
+        return false;
+}
+
+
+function getMonths(year){
+    var month = [31,31,30,31,30,31,30,31,31,30,31,30,31];       
+    if (isKabisat(year))
+        month[2] = 29;
+    else
+        month[2] = 29;
+    return month;
+}
+
 function formatingSchedule(schedule){
 
+    
 	var splitedSchedule =  schedule.split(" ");
 	var time = splitedSchedule[1].split(":");
-	
+	var date = splitedSchedule[0].split("-");
+    var months = getMonths(date[0]);
+
+    var isDay = false;
+    var isMonth = false;
+    var isYear = false;
+
 	if (time[0]>=7)
 		time[0] = parseInt(time[0]) - 7;
-	else
-		time[0] = parseInt(time[0]) + 17;
-	
-	schedule = splitedSchedule[0]+' '+time[0]+':'+time[1]+':'+'00';	
+	else{
+		time[0] = parseInt(time[0]) + 17;        
+        isDay = true;
+    }
+	if (isDay){        
+        date[2] = date[2]- 1;
+        if (date[2] == 0){
+            date[2] = months[date[1]-1];
+            isMonth = true;            
+        }        
+    }
+    if (isMonth){
+        date[1] = date[1]-1;
+        if (date[1] == 0){
+            date[1] = 12;
+            isYear = true;
+        }
+    }
+    if (isYear)
+        date[0] = date[0] - 1;
+
+	schedule = date[0]+'-'+date[1]+'-'+date[2]+' '+time[0]+':'+time[1]+':'+'00';	
 	return schedule;
 }
 
@@ -96,8 +143,6 @@ app.controller('myMain', function($scope) {
     	
         social_account_id = $scope.selection;        
     	schedule = formatingSchedule(schedule);        
-
-        console.log(schedule);
 
     	if(addSchedule(project_id,social_account_id,schedule,message) == 'Created'){
             $scope.message = '';
