@@ -58,38 +58,3 @@ function callAjax(url, type, dataType, data, headers, async){
 function getWindow(){
 	alert('hello');
 }
-
-// chrome.extension.onConnect.addListener(function(port) {  
-//   port.onMessage.addListener(function(msg) {  	  	
-//         //openLogin(msg);
-//         alert('con');
-//   });
-// });
-
-// function injectJs(srcFile) {
-//     var scr = document.createElement('script');
-//     scr.src = srcFile;
-//     document.getElementsByTagName('body')[0].appendChild(scr);    
-// }
-// injectJs(chrome.extension.getURL('js/inject.js'));
-
-
-
-// injectJs(chrome.extension.getURL('js/yourscript.js'));
-
-
-var greeting = "hola, ";
-var button = document.getElementById("mybutton");
-button.person_name = "Roberto";
-button.addEventListener("click", function() {
-  alert(greeting + button.person_name + ".");
-}, false);
-
-
-
-
-button.addEventListener("click", function() {
-  // do something
-}, false);
-
-

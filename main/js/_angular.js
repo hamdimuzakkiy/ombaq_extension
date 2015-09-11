@@ -98,7 +98,7 @@ app.controller('myMain', function($scope) {
     $scope.selectedOption = $scope.projects[0].value;
     $scope.curentProject = $scope.projects[0].name;
 	$scope.schedule = '';
-    $scope.message = document.referrer;    
+    //$scope.message = document.referrer;    
     $scope.social_accounts = retriveSocialId(getSourcesProjectId($scope.projects[0].value));
     project_id = $scope.projects[0].value;
     $scope.selection=[];
@@ -120,7 +120,7 @@ app.controller('myMain', function($scope) {
     }    
     $scope.updateProject = function updateProject(){     
         project_id = $scope.selectedOption;
-        $scope.message = document.referrer;            
+        //$scope.message = document.referrer;
         $scope.social_accounts = retriveSocialId(getSourcesProjectId($scope.selectedOption));
         list_proj = retriveProject(getProject());
         for (var i = 0; i < list_proj.length; i++) {
@@ -138,14 +138,13 @@ app.controller('myMain', function($scope) {
     	
     	project = getProject();    	
 
-    	message = this.message;
+    	message = getInputMessage();
     	schedule = getInputDate();        
     	
         social_account_id = $scope.selection;        
     	schedule = formatingSchedule(schedule);        
 
-    	if(addSchedule(project_id,social_account_id,schedule,message) == 'Created'){
-            $scope.message = '';
+    	if(addSchedule(project_id,social_account_id,schedule,message) == 'Created'){        
     		swal("Created!", "", "success");
         }
     	else{
@@ -157,4 +156,9 @@ app.controller('myMain', function($scope) {
 
 function getInputDate(){
     return $('#inpDate').val();
+}
+
+
+function getInputMessage(){
+    return $('#message').val();
 }

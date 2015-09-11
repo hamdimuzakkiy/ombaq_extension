@@ -109,8 +109,7 @@ function getProject(){
     return callAjax(url, type, dataType, data, headers, async);
 }
 
-function addProjects(project_name,project_description){
-    console.log(window.location.href+'add proj');
+function addProjects(project_name,project_description){    
     init();
     token =  getCSRF();
     url = base_url+'projects';    
@@ -196,10 +195,10 @@ function callAjax(url, type, dataType, data, headers, async){
     return dataReturn;
 }
 
-function callBackground(url){    
+function callBackground(url){
     var port = chrome.extension.connect({name: "Sample Communication"});
     port.postMessage(url);
-    port.onMessage.addListener(function(msg) {alert(msg)      
+    port.onMessage.addListener(function(msg) {alert(msg)
     });
 }
 
@@ -216,3 +215,6 @@ function callBackground(url){
 //     if (!response.success)
 //       handleError(url);
 //   });
+
+
+

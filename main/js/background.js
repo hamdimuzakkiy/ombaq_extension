@@ -17,6 +17,13 @@ function closeLogin(_window){
 }
 
 
-function test(){
-	alert('background here');
-}
+// function test(){
+// 	alert('background here');
+// }
+
+// test
+
+
+// var greeting = "hola, ";
+// var button = document.getElementById("mybutton");
+// button.person_name = "Roberto";

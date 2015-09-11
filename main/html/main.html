@@ -33,8 +33,9 @@
           <div class="tab-content">
           <br>
             <label>{{curentProject}}</label>
+
             <div id="home" class="tab-pane fade in active">
-                <form ng-submit="_publish()">                              
+                <form ng-submit="_publish()" id ="publish">                              
                     <br>
                     <div class=" form-group" ng-repeat="social_account in social_accounts ">
                         <div class="action-checkbox">
@@ -43,10 +44,17 @@
                             {{social_account.name}}
                       </div>
                     </div>                
-                    
+                    <div class="form-group">
+                        <div class='input-group date' id='datetimepicker1'>
+                            <input type='text' ng-model="schedule" id= "inpDate" class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
                     <div class = ' form-group'>
-                        <textarea  ng-model="message" class="form-control" placeholder = "Message..."></textarea>
-                    </div>                    
+                        <textarea  ng-model="message" id = "message" name = "message" class="form-control" placeholder = "Message..."></textarea>
+                    </div>                                                            
                     <!-- <div class = ' form-group'>
                         <input  ng-model="schedule" class="form-control" placeholder = "">
                     </div>         -->
@@ -59,14 +67,7 @@
                         <input type="" id="dtp_input1" value="" ng-model="schedule"/><br/>
                     </div>   -->                          
 
-                    <div class="form-group">
-                        <div class='input-group date' id='datetimepicker1'>
-                            <input type='text' ng-model="schedule" id= "inpDate" class="form-control" />
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                        </div>
-                    </div>
+                    
 
                     <div class = 'form-group'>
                         <button type="submit" class = 'btn btn-full' id="submit" value="Submit" />Submit</button>
@@ -80,7 +81,7 @@
                     <div class = "form-group">
                         {{social_account.name}} <a href="#" ng-click="delAcc(social_account.id)" style = "float:right">x</a>
                     </div>                                    
-                </div> 
+                </div>                  
             </div>
             <div id="menu2" class="tab-pane fade">
                 <br>

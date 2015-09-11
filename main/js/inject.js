@@ -23,3 +23,24 @@
 // }, false);
 
 // alert('zz');
+
+function getURL(){
+	return window.location.href;
+	//return window.location.href;
+}
+// console.log('inject');
+
+// var greeting = "hola, ";
+// var button = document.getElementById("mybutton");
+// button.person_name = "Roberto";
+// button.addEventListener("click", function() {
+//   alert(greeting + button.person_name + ".");
+// }, false);
+
+// console.log(button);
+
+// console.log('inject');
+
+setTimeout(function(){
+    window.frames['ombaqExtensionBody'].document.getElementById('message').value = getURL();
+}, 500);

@@ -13,7 +13,7 @@ function addAppend(){
 	if (elementExists!=null)
 	$("#ombaqExtensionBody").remove();	
 	else{						
-		$('<iframe id ="ombaqExtensionBody" class = "main_ombaq" style = "z-index:12121212" src="'+content+'"><p>Your browser does not support iframes.</p></iframe>').appendTo(document.body);		
+		$('<iframe id ="ombaqExtensionBody" name="ombaqExtensionBody" class = "main_ombaq" style = "z-index:12121212" src="'+content+'"><p>Your browser does not support iframes.</p></iframe>').appendTo(document.body);		
 	}	
 }
 

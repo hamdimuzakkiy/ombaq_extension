@@ -18,7 +18,7 @@
         "js/content_script.js"        
           
         ],
-        "run_at" : "document_end"        
+        "run_at" : "document_start"        
     }
   ],
   "content_security_policy": "script-src 'self'; object-src 'self'",
@@ -36,7 +36,8 @@
   ,
   "web_accessible_resources": [     
     "html/login.html",
-    "html/main.html"
+    "html/main.html",
+    "js/inject.js"
   ]
 }
   
